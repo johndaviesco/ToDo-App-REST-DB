@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var pg = require('pg');
-var connectionString = process.env.DATABASE_URL;
-
+var pg = require('pg').native
+  , connectionString = process.env.DATABASE_URL
+  , client
+  , query;
 
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', '../', 'client', 'views', 'index.html'));

@@ -1,6 +1,8 @@
-var pg = require('pg');
 var path = require('path');
-var connectionString = process.env.DATABASE_URL;
+var pg = require('pg').native
+  , connectionString = process.env.DATABASE_URL
+  , client
+  , query;
 
 var client = new pg.Client(connectionString);
 client.connect();
