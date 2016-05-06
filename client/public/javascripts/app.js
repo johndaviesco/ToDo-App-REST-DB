@@ -11,7 +11,6 @@ $(document).ready(function(e) {
     console.log(data)
     $('#todo-list').html('');
     for(item in data){
-
       var taskName = data[item]["text"];
       var taskHTML = '<li todo_id=' + data[item]['id']+ ' text=' + data[item]["text"] +'><span class="done">%</span>';
       taskHTML += '<span class="delete" todo_id='+ data[item]['id'] +'>x</span>';
@@ -36,6 +35,7 @@ $(document).ready(function(e) {
 		buttons : {
 			"Add task" : function () {
         $.ajax({'url':'/api/v1/todos', 'type':'put', 'data':{'text':$('#task').val()}}).success(rebuild_to_be_done);
+        $(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
 		}
@@ -57,7 +57,6 @@ $(document).ready(function(e) {
 
 	$('#todo-list').on('click','.delete',function() {
 		$('#confirm').dialog('open');
-
 		conf = $(this);
 
 	});
@@ -71,9 +70,8 @@ $(document).ready(function(e) {
 		modal : true, autoOpen : false,
 		buttons : {
 			"Yes" : function () {
-        console.log(conf)
         $.ajax({'url':'/api/v1/todos/' + conf.attr('todo_id'), 'type':'delete'}).success(rebuild_to_be_done);
-				$(this).dialog('close');
+        $(this).dialog('close');
 			},
 			"No" : function () {
 				$(this).dialog('close');
