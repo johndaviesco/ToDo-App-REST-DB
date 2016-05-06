@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My To-Do List</title>
+<link href="stylesheets/style.css" rel="stylesheet">
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script src="javascripts/app.js"></script>
+
+</head>
+<body>
+<div class="container">
+<div id="to-do">
+<h1>My To-do List</h1>
+<!-- add button here -->
+<button id="add-todo">Add to-do item</button>
+
+<h2>To Be Done</h2>
+<ul id="todo-list">
+<ul id="todo-list" class="sortlist">
+
+</ul>
+</div>
+<div id="completed">
+<h2>Completed Tasks</h2>
+<ul id="completed-list">
+<ul id="completed-list" class="sortlist">
+
+</ul>
+</div>
+<!-- add dialog box here -->
+<div id="new-todo" title="Add to-do item">
+	<form>
+		<p>
+			<label for="task">Task Name:</label>
+			<input type="text" name="task" id="task">
+		</p>
+	</form>
+</div>
+<div id="confirm" title="Confirmation">
+	<form>
+		<p>
+			<label for="confirm-msg">Are You sure you want to remove this ?</label>
+		</p>
+	</form>
+</div>
+</div>
+</body>
+</html>
