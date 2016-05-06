@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var pg = require('pg');
-var connectionString = "postgres://jdc:abcd@localhost/todo";
+var connectionString = process.env.DATABASE_URL;
 
 
 router.get('/', function(req, res, next) {

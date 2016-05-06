@@ -1,6 +1,6 @@
 var pg = require('pg');
 var path = require('path');
-var connectionString = "postgres://jdc:abcd@localhost/todo";
+var connectionString = process.env.DATABASE_URL;
 
 var client = new pg.Client(connectionString);
 client.connect();
