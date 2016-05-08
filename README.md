@@ -62,6 +62,13 @@ This is the Curl script which tests the Delete method, deletes specified todo
 curl -X DELETE http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos/31
 ```
 
+### Rest Interface
+
+  My rest interfaces are located server/routes/index.js
+  I have Implemented GET, PUT, POST and DELETE
+
+  Definition: REST stands for Representational State Transfer. It relies on a stateless, client-server, cacheable communications protocol and in virtually all cases, the HTTP protocol is used. REST is an architecture style for designing networked applications.
+
 ### Error Handling
 
 I did all my error handling in app.js at the root of the project. I cover all the major Http errors such as. I achieved this using expresses built in error handling library and a if else block.
@@ -79,3 +86,8 @@ I did all my error handling in app.js at the root of the project. I cover all th
   * 502 Bad Gateway
 
   * 504 Gateway Timeout
+
+### Cloud Hosting
+
+  I had problems Hosting on heroku so I decided to host this web application on AWS.
+  URL: http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/
