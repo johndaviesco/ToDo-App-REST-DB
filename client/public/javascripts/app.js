@@ -9,7 +9,8 @@ $(document).ready(function(e) {
 
   function rebuild_to_be_done(data){
     console.log(data)
-    $('#todo-list').html('');
+    $('#todo-list').empty();
+    $('#completed-list').empty();
     for(item in data){
       var taskName = data[item]["text"];
       var taskHTML = '<li todo_id=' + data[item]['id']+ ' text=' + data[item]["text"] +'><span class="done">%</span>';
@@ -18,7 +19,6 @@ $(document).ready(function(e) {
       var $newTask = $(taskHTML);
       $newTask.find('.task').text(taskName);
       $newTask.hide();
-
       if (data[item]['complete'] == false){
         // todo item
         $('#todo-list').prepend($newTask);
@@ -45,7 +45,16 @@ $(document).ready(function(e) {
 		$.ajax({'url':'/api/v1/todos/' + $taskItem.attr('todo_id'), 'type':'post', 'data':{'complete':true, 'text':$taskItem.attr('text')}}).success(rebuild_to_be_done);
 	});
 
-  //$.ajax({'url':'/api/v1/todos/' + $taskItem.attr('todo_id'), 'type':'post', 'data':{'complete':true, 'text':$taskItem.attr('text')}}).success(rebuild_to_be_done);
+  /*
+  $.ajax({
+    'url':'/api/v1/todos/' + $taskItem.attr('todo_id'),
+    'type':'post',
+    'data':{
+      'complete':true,
+      'text':$taskItem.attr('text')}
+    })
+    .success(rebuild_to_be_done);
+*/
 
 	$('#todo-list').sortable({
 		connectWith : $('#completed-list').sortable(),
@@ -54,6 +63,18 @@ $(document).ready(function(e) {
 		cancel : '.delete,.done'
 	});
 	var conf;
+
+  $('#completed-list').on('sortreceive',function (event,ui) {
+    var $taskItem = ui.item;
+    $.ajax({
+      'url':'/api/v1/todos/' + $taskItem.attr('todo_id'),
+      'type':'post',
+      'data':{
+        'complete':true,
+        'text':$taskItem.attr('text')}
+      })
+      .success(rebuild_to_be_done);
+  })
 
 	$('#todo-list').on('click','.delete',function() {
 		$('#confirm').dialog('open');
