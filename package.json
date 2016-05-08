@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "supervisor ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
@@ -14,8 +14,5 @@
     "morgan": "~1.5.1",
     "pg": "^4.2.0",
     "serve-favicon": "~2.2.0"
-  },
-  "devDependencies": {
-    "supervisor": "~0.7.1"
   }
 }
