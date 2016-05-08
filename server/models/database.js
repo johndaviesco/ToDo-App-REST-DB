@@ -1,8 +1,6 @@
+var pg = require('pg');
 var path = require('path');
-var pg = require('pg').native
-  , connectionString = process.env.DATABASE_URL
-  , client
-  , query;
+var connectionString = "postgres://jdc:abcd@localhost/todo";
 
 var client = new pg.Client(connectionString);
 client.connect();

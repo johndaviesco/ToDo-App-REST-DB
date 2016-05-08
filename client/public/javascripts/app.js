@@ -55,7 +55,6 @@ $(document).ready(function(e) {
     })
     .success(rebuild_to_be_done);
 */
-
 	$('#todo-list').sortable({
 		connectWith : $('#completed-list').sortable(),
 		cursor : 'pointer',
