@@ -4,7 +4,7 @@ var path = require('path');
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL;
 
-pg.defualts.ssl = true;
+pg.defaults.ssl = true;
 
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', '../', 'client', 'views', 'index.html'));
