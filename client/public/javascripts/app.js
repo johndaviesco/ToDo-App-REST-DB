@@ -63,14 +63,6 @@ $(document).ready(function(e) {
 	});
 	var conf;
 
-  $('#completed-list').sortable({
-    connectWith : $('#todo-list').sortable(),
-    cursor : 'pointer',
-    placeholder : 'ui-state-highlight',
-    cancel : '.delete,.done'
-  });
-  var conf;
-
   $('#completed-list').on('sortreceive',function(event,ui) {
     var $taskItem = ui.item;
     $.ajax({
@@ -81,11 +73,6 @@ $(document).ready(function(e) {
         'text':$taskItem.attr('text')}
       })
       .success(rebuild_to_be_done);
-  })
-
-  $('#todo-list').on('sortreceive',function(event,ui) {
-    var $taskItem = ui.item;
-    $.ajax({'url':'/api/v1/todos', 'type':'put', 'data':{'text':$('#task').val()}}).success(rebuild_to_be_done);
   })
 
 	$('#todo-list').on('click','.delete',function() {
