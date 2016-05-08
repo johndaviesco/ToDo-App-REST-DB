@@ -30,12 +30,16 @@ app.use('/', routes);
 //     next(err);
 // });
 
-// error handlers
+app.use(function(err, req, res, next) {
+  if(err.status !== 404) {
+    return next();
+  }
 
-function errorHandler(err, req, res, next) {
   res.status(404);
-  res.render('error', { error: err });
-}
+  res.send(err.message || '** no unicorns here **');
+});
+
+// error handlers
 
 // development error handler
 // will print stacktrace
