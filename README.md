@@ -4,6 +4,10 @@
 
 * postgressql
 
+  * Create a Database called todo
+
+  * Create a user roll for the database
+
 * Node.js
 
 ### Steps
@@ -19,7 +23,7 @@
   cd ToDo-App-REST-DB
   npm install
   ```
-  
+
 3. Change Database connection string in following file to your connection string.
 
   * server/models/database.js
@@ -30,6 +34,10 @@
    ```javascript
    var connectionString = "postgres://username:password@localhost/todo";
    ```
+
+4. Setup Database by running the following
+
+  * node server/models/database.js
 
 4. Run application
   ```shell
