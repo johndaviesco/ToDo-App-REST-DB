@@ -61,3 +61,21 @@ This is the Curl script which tests the Delete method, deletes specified todo
 ```shell
 curl -X DELETE http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos/31
 ```
+
+### Error Handling
+
+I did all my error handling in app.js at the root of the project. I cover all the major Http errors such as. I achieved this using expresses built in error handling library and a if else block.
+
+  * 400 Bad Request
+
+  * 401 Unauthorized
+
+  * 403 Forbidden
+
+  * 404 Not Found
+
+  * 500 Internal Server Error
+
+  * 502 Bad Gateway
+
+  * 504 Gateway Timeout
