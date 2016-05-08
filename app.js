@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, './client', 'public')));
 
 app.use('/', routes);
 
-catch 404 and forward to error handler
+//catch 404 and forward to error handler
 app.use(function(err, req, res, next) {
     if(err.status !== 404) {
       return next();
