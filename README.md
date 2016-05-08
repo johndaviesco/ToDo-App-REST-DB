@@ -44,7 +44,7 @@
   npm start
   ```
 
-## Curl Testing Scripts (please replace the values in angle brackets ie <Todo Name> to "Bob")
+### Curl Testing Scripts (please replace the values in angle brackets ie <Todo Name> to "Bob")
 This is the Curl script which tests the Put method, put simply adds a new todo
 ```shell
 curl -H "Content-Type: application/json" -X PUT -d '{"id": <ID Number>, "text": <Todo Name>, "complete": "false"}' http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos
