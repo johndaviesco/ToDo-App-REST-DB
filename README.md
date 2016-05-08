@@ -43,3 +43,21 @@
   ```shell
   npm start
   ```
+
+## Curl Testing Scripts (please replace the values in angle brackets ie <Todo Name> to "Bob")
+This is the Curl script which tests the Put method, put simply adds a new todo
+```shell
+curl -H "Content-Type: application/json" -X PUT -d '{"id": <ID Number>, "text": <Todo Name>, "complete": "false"}' http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos
+```
+This is the Curl script which tests the Get method, gets all the todo's as and array of json data
+```shell
+curl -X GET http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos/
+```
+This is the Curl script which tests the Post method, updates the specified todo to completed
+```shell
+curl -H "Content-Type: application/json" -X POST -d '{"id": <ID Number>, "text": <Todo Name>, "complete": "true"}' http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos/30
+```
+This is the Curl script which tests the Delete method, deletes specified todo
+```shell
+curl -X DELETE http://ec2-54-206-41-25.ap-southeast-2.compute.amazonaws.com:3000/api/v1/todos/31
+```
