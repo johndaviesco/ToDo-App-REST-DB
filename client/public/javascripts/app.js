@@ -34,27 +34,26 @@ $(document).ready(function(e) {
 		modal : true, autoOpen : false,
 		buttons : {
 			"Add task" : function () {
-        $.ajax({'url':'/api/v1/todos', 'type':'put', 'data':{'text':$('#task').val()}}).success(rebuild_to_be_done);
-        $(this).dialog('close');
+        $.ajax({'url':'/api/v1/todos',
+          'type':'put',
+          'data':{'text':$('#task').val()}
+        })
+        .success(rebuild_to_be_done);
+      $(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
 		}
 	});
 	$('#todo-list').on('click', '.done', function() {
 		var $taskItem = $(this).parent('li');
-		$.ajax({'url':'/api/v1/todos/' + $taskItem.attr('todo_id'), 'type':'post', 'data':{'complete':true, 'text':$taskItem.attr('text')}}).success(rebuild_to_be_done);
-	});
-
-  /*
-  $.ajax({
-    'url':'/api/v1/todos/' + $taskItem.attr('todo_id'),
-    'type':'post',
-    'data':{
-      'complete':true,
-      'text':$taskItem.attr('text')}
+		$.ajax({
+      'url':'/api/v1/todos/' + $taskItem.attr('todo_id'),
+      'type':'post',
+      'data':{'complete':true, 'text':$taskItem.attr('text')}
     })
     .success(rebuild_to_be_done);
-*/
+	});
+
 	$('#todo-list').sortable({
 		connectWith : $('#completed-list').sortable(),
 		cursor : 'pointer',
@@ -78,7 +77,6 @@ $(document).ready(function(e) {
 	$('#todo-list').on('click','.delete',function() {
 		$('#confirm').dialog('open');
 		conf = $(this);
-
 	});
 
 	$('#completed-list').on('click','.delete',function() {
@@ -90,7 +88,11 @@ $(document).ready(function(e) {
 		modal : true, autoOpen : false,
 		buttons : {
 			"Yes" : function () {
-        $.ajax({'url':'/api/v1/todos/' + conf.attr('todo_id'), 'type':'delete'}).success(rebuild_to_be_done);
+        $.ajax({
+          'url':'/api/v1/todos/' + conf.attr('todo_id'),
+          'type':'delete'
+        })
+        .success(rebuild_to_be_done);
         $(this).dialog('close');
 			},
 			"No" : function () {
