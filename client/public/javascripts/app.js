@@ -63,6 +63,14 @@ $(document).ready(function(e) {
 	});
 	var conf;
 
+  $('#completed-list').sortable({
+    connectWith : $('#todo-list').sortable(),
+    cursor : 'pointer',
+    placeholder : 'ui-state-highlight',
+    cancel : '.delete,.done'
+  });
+  var conf;
+
   $('#completed-list').on('sortreceive',function(event,ui) {
     var $taskItem = ui.item;
     $.ajax({
