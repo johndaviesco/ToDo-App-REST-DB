@@ -32,8 +32,33 @@ app.use('/', routes);
 
 
 app.use(function(err, req, res, next) {
-  res.status(404);
-  res.send('oops! something broke');
+  if (res.statusCode == 400){
+    res.status(400);
+    res.send('Bad Request');
+  }
+  if (res.statusCode == 401){
+    res.status(401);
+    res.send('Unauthorized');
+  }
+  if (res.statusCode == 403){
+    res.status(403);
+    res.send('Unauthorized');
+  }
+  if (res.statusCode == 404){
+    res.status(404);
+    res.send('Not Found');
+  }
+  if (res.statusCode == 502){
+    res.status(502);
+    res.send('Bad Gateway');
+  }
+  if (res.statusCode == 504){
+    res.status(504);
+    res.send('Gateway Timeout');
+  }
+  else{
+    next(err);
+  }
 });
 
 // error handlers
