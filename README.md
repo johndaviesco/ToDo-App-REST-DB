@@ -6,7 +6,7 @@
 
   * Create a Database called todo
 
-  * Create a user roll for the database
+  * Create a user roll for the database and give it a password
 
 * Node.js
 
